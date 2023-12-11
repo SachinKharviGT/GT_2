@@ -2,61 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
 import 'package:gt_2/HomePage.dart';
-import 'package:gt_2/src/features/authentication/controllers/splash_screen_controller.dart';
+import 'package:gt_2/src/common_widgets/fade_in_animation/animation_design.dart';
+import 'package:gt_2/src/common_widgets/fade_in_animation/fade_in_%20animation_model.dart';
+import 'package:gt_2/src/common_widgets/fade_in_animation/splash_screen_controller.dart';
 
 class SplashScreen extends StatelessWidget {
    SplashScreen({super.key});
-  final splashController = Get.put(SplashScreenController());
+
   @override
   Widget build(BuildContext context) {
-    splashController.starAnimation();
+
+    final splashController = Get.put(FadeInAnimationController());
+    splashController.starSplashAnimation();
+
     return Scaffold(
       body: Stack(
         children: [
-          Obx(
-                () => AnimatedPositioned(
-                duration: const Duration(milliseconds: 1300),
-                top:  splashController.animate.value ? 0 : -30,
-                left: splashController.animate.value ? 0 : -30,
-                child: Icon(Icons.connecting_airports_sharp,size: 100,)),
+          FadeInAnimation(durationInMs: 1600,
+            animation: AnimatePosition(
+              topAfter: 0,topBefore: -30, leftBefore: -30,leftAfter:  0,
+            ),
+            child: Text("hello",style: Theme.of(context).textTheme.headline4,),
+
           ),
-          Obx(
-            ()=> AnimatedPositioned(
-                duration: const Duration(milliseconds: 1300),
-                top: 40,
-                left: splashController.animate.value ? 0 : -80,
-                child: AnimatedOpacity(
-                  duration: const Duration(milliseconds: 1300),
-                  opacity: splashController.animate.value ? 1: 0,
-                  child: Column(
-                    children: [
-                      Text("hello"),
-                    ],
-                  ),
-                )),
+          FadeInAnimation(durationInMs: 2000, child: Text("fdfdf"),
+            animation: AnimatePosition(
+            topBefore: 80,topAfter: 80,leftAfter: 30,rightAfter: 34,rightBefore: 34,leftBefore: 33
           ),
-          Obx(
-            ()=> AnimatedPositioned(
-                duration: const Duration(milliseconds: 1300),
-                top: 80,
-                left: 0,
-                child: Icon(Icons.dashboard_customize,size: 50,)),
-          ),
-          Obx(
-            () => AnimatedPositioned(
-                duration: const Duration(milliseconds: 1300),
-                bottom: 50,
-                left: 0,
-                child: Icon(Icons.dashboard_customize,size: 50,)),
           )
+
         ],
       ),
     );
   }
-
-
-
-
-
 }
 
