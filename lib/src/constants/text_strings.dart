@@ -31,6 +31,31 @@ class Text_Strings{
   static String mobile_number  = "Mobile Number";
   static String signup_with_google = "SignUp With Google";
 
+  // Forget Password//
+  static String make_selection = "Make Selection";
+  static String e_mail = "E-Mail";
+  static String reset_email= "Reset via email verification";
+  static String phone= "Reset via email verification";
+  static String reset_phone= "Reset via email verification";
+  static String nextTxt= "Next";
+
+  // OTP Screen//
+  static String  otp_title= "CODE";
+  static String  otp_verification= "Verification";
+  static String  otp_content= "Enter the verification code sent to  supported mail";
+
+  //Dashboard//
+
+  static String  dashboardTxt= "Dashboard";
+  static String  dashboard_content= "Hello Let's Start";
+  static String  dashboard_search= "Search";
+
+
+
+
+
+
+
 
 
 
